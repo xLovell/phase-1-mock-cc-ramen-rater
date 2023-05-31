@@ -24,11 +24,11 @@ function renderRamen() {
     ramenList.forEach(displayRamen)
 }
 
-function displayRamen(ramen) { 
+function displayRamen(ramen) {
     const ramenCard = document.createElement("img")
     ramenCard.src = ramen.image
     ramenMenu.appendChild(ramenCard)
-    ramenCard.addEventListener("click", () => {loadRamenInfo(ramen)})
+    ramenCard.addEventListener("click", () => { loadRamenInfo(ramen) })
 }
 
 function loadRamenInfo(ramen) {
@@ -51,7 +51,7 @@ function addNewRamen(event) {
     event.preventDefault()
     const form = event.target
     const formComment = document.getElementById("new-comment")
-    
+
     const newRamen = {
         name: form.name.value,
         restaurant: form.restaurant.value,
@@ -65,10 +65,10 @@ function addNewRamen(event) {
         method: "POST",
         body: JSON.stringify(newRamen),
     })
-    .then(res => res.json())
-    .then(json => {
-        ramenList.push(json)
-        renderRamen()
-    })
+        .then(res => res.json())
+        .then(json => {
+            ramenList.push(json)
+            renderRamen()
+        })
 
 }
